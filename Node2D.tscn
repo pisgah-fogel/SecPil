@@ -1,0 +1,91 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/ui.png" type="Texture" id=1]
+[ext_resource path="res://Control.gd" type="Script" id=2]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="rectNum" type="ColorRect" parent="CanvasLayer/Control"]
+margin_left = 739.65
+margin_top = 322.956
+margin_right = 989.65
+margin_bottom = 572.956
+rect_pivot_offset = Vector2( 74.1519, 72.5089 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="rectPal" type="ColorRect" parent="CanvasLayer/Control"]
+margin_left = 23.327
+margin_top = 318.23
+margin_right = 423.327
+margin_bottom = 568.23
+rect_pivot_offset = Vector2( 74.1519, 72.5089 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="rectCursor" type="ColorRect" parent="CanvasLayer/Control"]
+margin_left = 320.222
+margin_top = 41.5128
+margin_right = 720.222
+margin_bottom = 291.513
+rect_pivot_offset = Vector2( 74.1519, 72.5089 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RandNum" type="Label" parent="CanvasLayer/Control"]
+margin_left = 845.063
+margin_top = 418.792
+margin_right = 885.063
+margin_bottom = 432.792
+rect_scale = Vector2( 5, 5 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "#"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="targetPallonier" type="ColorRect" parent="CanvasLayer/Control"]
+anchor_bottom = 1.0
+margin_left = 214.0
+margin_top = 292.995
+margin_right = 228.915
+margin_bottom = 592.995
+color = Color( 0.286275, 0.286275, 0.286275, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="targetCursor" type="Sprite" parent="CanvasLayer/Control"]
+position = Vector2( 525.098, 174.905 )
+texture = ExtResource( 1 )
+hframes = 4
+
+[node name="palonnier" type="Sprite" parent="CanvasLayer/Control"]
+position = Vector2( 226.636, 445.748 )
+texture = ExtResource( 1 )
+hframes = 4
+frame = 2
+
+[node name="cursor" type="Sprite" parent="CanvasLayer/Control"]
+position = Vector2( 623.457, 159.368 )
+texture = ExtResource( 1 )
+hframes = 4
+frame = 1
+
+[node name="Timer" type="Timer" parent="CanvasLayer/Control"]
+wait_time = 10.0
+autostart = true
+[connection signal="timeout" from="CanvasLayer/Control/Timer" to="CanvasLayer/Control" method="_on_Timer_timeout"]

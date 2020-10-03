@@ -56,11 +56,12 @@ func _process(delta):
 		update_cursor(delta)
 
 # if Input.get_connected_joypads().size() > 0:
-export(int) var cursor_user_amp = 90
+export(int) var cursor_user_amp = 3
 export(int) var cursor_amp = 70
 var cursor_start_x = 525
 var cursor_start_y = 175
 var cursor_f = 0.0
+var cursor_speed = Vector2(0, 0)
 func update_cursor(delta):
 	mTargetCursor.position.x = cursor_start_x + cursor_amp*sin(cursor_f)
 	mTargetCursor.position.y = cursor_start_y + cursor_amp*cos(cursor_f)
@@ -73,10 +74,12 @@ func update_cursor(delta):
 	
 	var updown = down - up
 	var rightleft = right - left
-	var newcusorx = cursor_start_x + cursor_user_amp*(rightleft)
-	var newcursory = cursor_start_y + cursor_user_amp*(updown)
-	mCursor.position.x = lerp(mCursor.position.x, newcusorx, 0.05)
-	mCursor.position.y = lerp(mCursor.position.y, newcursory, 0.05)
+	cursor_speed.x = lerp(cursor_speed.x, rightleft, 0.05)
+	cursor_speed.y = lerp(cursor_speed.y, updown, 0.05)
+	mCursor.position += cursor_user_amp*cursor_speed
+	
+	mCursor.position.x = lerp(mCursor.position.x, cursor_start_x, 0.02)
+	mCursor.position.y = lerp(mCursor.position.y, cursor_start_y, 0.02)
 
 var sum = 0
 var oldnum = 0

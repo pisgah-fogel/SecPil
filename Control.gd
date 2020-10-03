@@ -31,9 +31,8 @@ func update_pallonier(delta):
 	mTargetPallonier.rect_position.x = pallonier_start_x + pallonier_amp*sin(pallonier_f)
 	pallonier_f += 0.5*delta
 
-	var right = Input.get_action_strength("pal_right")
-	diff += 0.02*(right - 0.45)
-	diff = lerp(diff, 0.0, 0.01)
+	var right = Input.get_action_strength("pal_right") - Input.get_action_strength("pal_left")
+	diff = lerp(diff, right, 0.03) # 0.01 is too easy
 	mPallonier.position.x = pallonier_start_x + diff*pallonier_user_amp
 	
 	if not notstartedyet:
